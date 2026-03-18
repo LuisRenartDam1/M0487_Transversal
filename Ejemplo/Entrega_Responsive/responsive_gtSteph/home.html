@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Tickets</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.svg" alt="Global Tickets" class="logo-svg">
+        </div>
+        <button class="menu-btn">
+            <img src="menu.svg" alt="Menu" class="menu-icon">
+        </button>
+    </header>
+
+    <section class="maria">
+        <img src="theMarias.jpg" alt="TheMaria" class="theMaria-image">
+    </section>
+
+    <main class="container">
+        <div class="grid">
+            <div class="card">
+                <img src="wte.jpg" alt="wave to earth">
+                <div class="card-info">
+                    <p class="date">MARCH 8, 2026</p>
+                    <h3>wave to earth</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="rusowsky.webp" alt="rusowsky">
+                <div class="card-info">
+                    <p class="date">MARCH 15, 2026</p>
+                    <h3>rusowsky</h3>
+                </div>
+            </div>
+
+            <div class="card product-card-tall">
+                <img src="ad.jpg" alt="ad">
+            </div>
+
+            <div class="card">
+                <img src="frankOcean.jpg" alt="Frank Ocean">
+                <div class="card-info">
+                    <p class="date">MARCH 20, 2026</p>
+                    <h3>Frank Ocean</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="kaliUchis.webp" alt="Kali Uchis">
+                <div class="card-info">
+                    <p class="date">MARCH 25, 2026</p>
+                    <h3>Kali Uchis</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="pinkpantheress2.webp" alt="pinkpantheress">
+                <div class="card-info">
+                    <p class="date">APRIL 2, 2026</p>
+                    <h3>pinkpantheress</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="charliXCX.webp" alt="charliXCX">
+                <div class="card-info">
+                    <p class="date">APRIL 8, 2026</p>
+                    <h3>Charli XCX</h3>
+                </div>
+            </div>
+
+            <div class="card product-card-bottom">
+                <img src="ad.jpg" alt="ad">
+            </div>
+
+            <div class="card countdown-card">
+                <h2>COUNTDOWN</h2>
+                <div class="timer" id="countdown">04:10:20</div>
+                <button class="reserve-btn">RESERVA AHORA</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="logo.svg" alt="Global Tickets" class="footer-logo-img">
+            </div>
+
+            <div class="footer-group">
+                <div class="footer-col">
+                    <h4>Instagram</h4>
+                    <p>@globaltickets</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Email</h4>
+                    <p>ticket@globaltickets</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>+30 111 111 111</p>
+                </div>
+            </div>
+
+            <div class="footer-group">
+                <div class="footer-col">
+                    <h4>Instagram</h4>
+                    <p>@globaltickets</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Email</h4>
+                    <p>ticket@globaltickets</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>+30 111 111 111</p>
+                </div>
+            </div>
+
+            <div class="footer-group">
+                <div class="footer-col">
+                    <h4>Instagram</h4>
+                    <p>@globaltickets</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Email</h4>
+                    <p>ticket@globaltickets</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>+30 111 111 111</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            let [hours, minutes, seconds] = countdownElement.textContent.split(':').map(Number);
+
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+            }
+            if (minutes < 0) {
+                minutes = 59;
+                hours--;
+            }
+            if (hours < 0) {
+                hours = 0;
+                minutes = 0;
+                seconds = 0;
+            }
+
+            countdownElement.textContent =
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="log_in_disco.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <header>
+            <div class="logo">
+                <img src="logo.svg" alt="Global Tickets Logo" class="logo-img">
+            </div>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <main>
+            <h1>Log in discography</h1>
+
+            <form novalidate action="#">
+                <div class="input-group">
+                    <label for="cif">CIF</label>
+                    <input type="text" id="cif" name="cif" required minlength="9" maxlength="9" placeholder=" ">
+                    <span class="error-msg">Username incorrect</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="fpassword" required required minlength="8"
+                        placeholder=" ">
+                    <span class="error-msg">Password incorrect</span>
+                </div>
+
+                <a href="#forgot-popup" class="forgot">Forgot password?</a>
+
+                <input type="submit" value="Log in" class="login-btn">
+            </form>
+        </main>
+    </div>
+
+    <div id="forgot-popup" class="overlay">
+        <div class="popup-content">
+            <a href="#" class="close-popup">&times;</a>
+
+            <h2>Forgot password?</h2>
+
+            <form novalidate>
+                <div class="input-group">
+                    <label>Enter mail or phone number</label>
+                    <input type="text" id="mail1" required placeholder=" ">
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm mail or phone number</label>
+                    <input type="text" id="mail2" required placeholder=" " pattern="test">
+                    <span class="error-feedback">Mail or phone number doesn't match</span>
+                </div>
+
+                <div class="button-container">
+                    <input type="submit" value="Send mail" class="pop-btn">
+                    <input type="submit" value="Send SMS" class="pop-btn">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="logo.svg" alt="Global Tickets" class="logo-img-footer" />
+        </div>
+        <div class="footer-columns">
+            <div class="info-column">
+                <p><strong>Instagram</strong><br />@globaltickets</p>
+                <p><strong>Email</strong><br />tickets@globaltickets.com</p>
+                <p><strong>Contact</strong><br />+30 111 111 111</p>
+            </div>
+            <div class="info-column">
+                <p><strong>Instagram</strong><br />@globaltickets</p>
+                <p><strong>Email</strong><br />tickets@globaltickets.com</p>
+                <p><strong>Contact</strong><br />+30 111 111 111</p>
+            </div>
+            <div class="info-column">
+                <p><strong>Instagram</strong><br />@globaltickets</p>
+                <p><strong>Email</strong><br />tickets@globaltickets.com</p>
+                <p><strong>Contact</strong><br />+30 111 111 111</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

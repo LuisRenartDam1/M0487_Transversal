@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Tickets - Create artist Account</title>
+    <link rel="stylesheet" href="create_artits.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img
+          src="Captura de pantalla 2026-01-12 121519.png"
+          alt="Global Tickets"
+          class="logo-img"
+        />
+      </div>
+      <div class="menu-icon">
+        <span>☰</span>
+      </div>
+    </header>
+    <main class="container">
+      <h1>Create artist account</h1>
+      <form class="registration-form">
+        <div class="form-content">
+          <div class="fields">
+            <div class="input-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+              <span class="error-msg">Please provide a name</span>
+            </div>
+
+            <div class="input-group">
+              <label for="cif">CIF</label>
+              <input
+                type="text"
+                id="cif"
+                name="cif"
+                pattern="[A-Z0-9]{9}"
+                required
+              />
+              <span class="error-msg">Please provide a CIF</span>
+            </div>
+
+            <div class="input-group">
+              <label for="email">Mail</label>
+              <input type="email" id="email" name="email" required />
+              <span class="error-msg">Please enter a valid email address</span>
+            </div>
+
+            <div class="input-group">
+              <label for="phone">Cellphone</label>
+              <input type="tel" id="phone" name="phone" required />
+              <span class="error-msg">Please enter a phone number</span>
+            </div>
+
+            <div class="input-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" required />
+              <span class="error-msg">Please enter an address</span>
+            </div>
+
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                minlength="8"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="confirm">Confirm password</label>
+              <input type="password" id="confirm" name="confirm" required />
+              <span class="error-msg">Password doesn't match</span>
+            </div>
+          </div>
+
+          <div class="photo-upload">
+            <div class="circle-add">
+              <span>+</span>
+            </div>
+            <p>Add photo</p>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn-primary">Create profile</button>
+          <button type="button" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-logo">
+        <img
+          src="Captura de pantalla 2026-01-12 121519.png"
+          alt="Global Tickets"
+          class="logo-img"
+        />
+      </div>
+      <div class="footer-links">
+        <div class="link-col">
+          <p><strong>Instagram</strong></p>
+          <p>@globaltickets</p>
+          <p><strong>Email</strong></p>
+          <p>ticket@globaltickets</p>
+          <p><strong>Contact</strong></p>
+          <p>+30 111 111 111</p>
+        </div>
+        <div class="link-col">
+          <p><strong>Instagram</strong></p>
+          <p>@globaltickets</p>
+          <p><strong>Email</strong></p>
+          <p>ticket@globaltickets</p>
+          <p><strong>Contact</strong></p>
+          <p>+30 111 111 111</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
