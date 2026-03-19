@@ -18,7 +18,7 @@ session_start();
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #e9e7e7 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -39,7 +39,7 @@ session_start();
             color: #333;
             font-size: 2.5em;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #e9e7e7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -78,7 +78,7 @@ session_start();
         }
 
         a.btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #e9e7e7 175%);
             color: white;
         }
 
@@ -103,7 +103,7 @@ session_start();
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #295be2 100%);
             color: white;
             padding: 15px 0;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -145,19 +145,19 @@ session_start();
     </header>
     <?php endif; ?>
     <div class="container">
-        <div class="login-icon"><img src="Captura de pantalla 2026-03-12 092948.png" alt="GameHub"></div>
+        <div class="login-icon"><img src="imagenes\LogoGameHub.png" alt="GameHub"></div><br><br>
         
 
         <?php if (isset($_SESSION['user'])): ?>
-            <p class="welcome-text">Welcome back!</p>
+            <p class="welcome-text">Bienvenido de vuelta!</p>
             <div class="user-name"><?php echo htmlspecialchars($_SESSION['user']); ?></div>
             <div class="button-group">
-                <a href="shop.php" class="btn-primary">🛍️ Go to Shop</a>
+                <a href="shop.php" class="btn-primary">🛍️ Volver a la tienda</a>
             </div>
         <?php else: ?>
-            <p class="welcome-text">Your online gaming shop destination</p>
+            <p class="welcome-text">Tu tienda online para comprar los mejores videojuegos a los mejores precios</p>
             <div class="button-group">
-                <a href="login.php" class="btn-primary">🔐 Login to web</a>
+                <a href="login.php" class="btn-primary">Iniciar sesión</a>
             </div>
         <?php endif; ?>
     </div>

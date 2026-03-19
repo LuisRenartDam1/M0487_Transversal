@@ -137,15 +137,16 @@ if (isset($_POST['username'])) {
 
         <form method="post">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
-                <input type="text" id="password" name="password" placeholder="Enter your password" required>
+                <label for="username">Nombre de usuario</label>
+                <input type="text" id="username" name="username" placeholder="Introduce tu nombre de usuario" required>
+                <br><br>
+                <input type="text" id="password" name="password" placeholder="Introduce tu contraseña" required>
             </div>
-            <button type="submit">Sign In</button>
+            <button type="submit">Iniciar sesión</button>
         </form>
 
         <div class="back-link">
-            <a href="home.php">← Back to Home</a>
+            <a href="home.php">← Volver</a>
         </div>
     </div>
 </body>
