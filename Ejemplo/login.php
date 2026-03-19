@@ -126,7 +126,7 @@ if (isset($_POST['username'])) {
         }
 
         .back-link a:hover {
-            color: #2b2b2b;
+            color: black;
         }
     </style>
 </head>
