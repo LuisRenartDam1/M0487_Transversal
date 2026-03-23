@@ -5,6 +5,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +66,8 @@ session_start();
             flex-direction: column;
         }
 
-        a, button {
+        a,
+        button {
             display: inline-block;
             padding: 15px 30px;
             font-size: 1.1em;
@@ -135,18 +137,19 @@ session_start();
         }
     </style>
 </head>
+
 <body>
-    <?php if (isset($_SESSION['user'])):?>
-    <header>
-        <div class="header-content">
-            <span style="font-weight: 600;">GameHub</span>
-            <div class="user-badge">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></div>
-        </div>
-    </header>
+    <?php if (isset($_SESSION['user'])): ?>
+        <header>
+            <div class="header-content">
+                <span style="font-weight: 600;">GameHub</span>
+                <div class="user-badge">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></div>
+            </div>
+        </header>
     <?php endif; ?>
     <div class="container">
         <div class="login-icon"><img src="imagenes\LogoGameHub.png" alt="GameHub"></div><br><br>
-        
+
 
         <?php if (isset($_SESSION['user'])): ?>
             <p class="welcome-text">Bienvenido de vuelta!</p>
@@ -157,9 +160,10 @@ session_start();
         <?php else: ?>
             <p class="welcome-text">Tu tienda online para comprar los mejores videojuegos a los mejores precios</p>
             <div class="button-group">
-                <a href="CONTROLLER/login.php" class="btn-primary">Iniciar sesión</a>
+                <a href="../CONTROLLER/login.php" class="btn-primary">Iniciar sesión</a>
             </div>
         <?php endif; ?>
     </div>
 </body>
+
 </html>
