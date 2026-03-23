@@ -146,7 +146,7 @@ if (isset($_POST['username'])) {
         </form>
 
         <div class="back-link">
-            <a href="home.php">← Volver</a>
+            <a href="Ejemplo/home.php">Volver</a>
         </div>
     </div>
 </body>
