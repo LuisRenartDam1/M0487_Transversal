@@ -27,7 +27,7 @@ session_start();
         }
 
         .container {
-            background: white;
+            background: #fbfbfb;
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 60px 40px;
@@ -148,14 +148,14 @@ session_start();
         </header>
     <?php endif; ?>
     <div class="container">
-        <div class="login-icon"><img src="../IMAGENES/LogoGameHub.png" alt="Logo GameHub"></div><br><br>
+        <div><img src="../IMAGENES/LogoGameHub.png" alt="Logo GameHub"></div><br><br>
 
 
         <?php if (isset($_SESSION['user'])): ?>
             <p class="welcome-text">Bienvenido de vuelta!</p>
             <div class="user-name"><?php echo htmlspecialchars($_SESSION['user']); ?></div>
             <div class="button-group">
-                <a href="MODEL/shop.php" class="btn-primary">Volver a la tienda</a>
+                <a href="../MODEL/shop.php" class="btn-primary">Volver a la tienda</a>
             </div>
         <?php else: ?>
             <p class="welcome-text">Tu tienda online para comprar los mejores videojuegos a los mejores precios</p>
