@@ -148,7 +148,7 @@ session_start();
         </header>
     <?php endif; ?>
     <div class="container">
-        <div class="login-icon"><img src="imagenes\LogoGameHub.png" alt="GameHub"></div><br><br>
+        <div class="login-icon"><img src="../IMAGENES/LogoGameHub.png" alt="Logo GameHub"></div><br><br>
 
 
         <?php if (isset($_SESSION['user'])): ?>
