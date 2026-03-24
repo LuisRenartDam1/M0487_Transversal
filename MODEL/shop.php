@@ -10,10 +10,10 @@ if (!isset($_SESSION['user'])) {
 
 // Product catalog (price + initial stock)
 $products = [
-    "ea fc26"   => ["price" => 79.99, "stock" => 78,  "img" => "ea-sports-fc-26-playstation-5-playstation-store-cover.jpg"],
-    "Spider-Man 2"    => ["price" => 59.99,  "stock" => 45, "img" => "marvel-s-spider-man-2-playstation-5-juego-playstation-store-europe-cover.jpg"],
-    "Nba 2k2026" => ["price" => 69.99,  "stock" => 87,  "img" => "20339-cover.jpg"],
-    "India Jones"  => ["price" => 39.99, "stock" => 12,  "img" => "18849-cover.jpg"]
+    "ea fc26"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/FC26.jpg"],
+    "Spider-Man 2"    => ["price" => 59.99,  "stock" => 45, "img" => "../IMAGENES/SpiderMan2.jpg"],
+    "Nba 2k2026" => ["price" => 69.99,  "stock" => 87,  "img" => "../IMAGENES/2K26.jpg"],
+    "India Jones"  => ["price" => 39.99, "stock" => 12,  "img" => "../IMAGENES/IndianaJones.jpg"],
 ];
 
 // Initialize stock in session (only once)
@@ -76,7 +76,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
             color: white;
             padding: 20px 0;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -174,7 +174,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
         }
 
         .btn-checkout {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
             color: white;
         }
 
@@ -220,7 +220,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
         }
 
         .product-icon {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
     height: 200px; 
     overflow: hidden;
     display: flex;
@@ -266,7 +266,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
         }
 
         .product-card button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
             color: white;
             border: none;
             padding: 12px 20px;
@@ -308,8 +308,8 @@ foreach ($_SESSION['cart'] as $item => $qty) {
             <div style="display: flex; gap: 15px; align-items: center;">
                 <span style="background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9em;">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></span>
                 <div class="nav-links">
-                    <a href="home.php">Home</a>
-                    <a href="login.php">Logout</a>
+                    <a href="../VIEW/home.php">Página Principal</a>
+                    <a href="../CONTROLLER/login.php">Cerrar Session</a>
                 </div>
             </div>
         </div>
@@ -319,17 +319,17 @@ foreach ($_SESSION['cart'] as $item => $qty) {
         <div class="cart-info">
         <div class="user-info">
     <div class="info-item">
-        <span class="info-label">Items in Cart</span>
+        <span class="info-label">Productos en la Cesta</span>
         <span class="info-value">
             <?= array_sum($_SESSION['cart']); ?>
         </span>
     </div>
 
     <div class="info-item">
-        <span class="info-label">Cart Details</span>
+        <span class="info-label">Detalles de la Cesta</span>
         <span class="info-value" style="font-size:0.95em; font-weight:500; color:#333;">
             <?php if (empty($_SESSION['cart'])): ?>
-                Empty
+                Vacio
             <?php else: ?>
                 <?php foreach ($_SESSION['cart'] as $item => $qty): ?>
                     <?= htmlspecialchars($item) ?>
@@ -341,7 +341,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
     </div>
 
     <div class="info-item">
-        <span class="info-label">Total Price</span>
+        <span class="info-label">Precio Total</span>
         <span class="info-value">
             €<?= number_format($totalPrice, 2); ?>
         </span>
@@ -350,7 +350,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
 
             
             <div class="cart-actions">
-                <a href="checkout.php" class="btn btn-checkout">🛒 Go to Checkout</a>
+                <a href="checkout.php" class="btn btn-checkout">Pagar el Pedido</a>
             </div>
         </div>
 

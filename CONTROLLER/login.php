@@ -5,7 +5,7 @@ if (isset($_POST['username'])) {
     $_SESSION['user'] = $_POST['username'];
     $_SESSION['password'] = $_POST['password'];
     $_SESSION['cart'] = [];
-    header("Location: shop.php");
+    header("Location: ../MODEL/shop.php");
     exit;
 }
 ?>
@@ -33,7 +33,7 @@ if (isset($_POST['username'])) {
         }
 
         .login-container {
-            background: white;
+            background: #fbfbfb;
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 50px 40px;
@@ -132,21 +132,21 @@ if (isset($_POST['username'])) {
 </head>
 <body>
     <div class="login-container">
-        <div class="login-icon"><img src="Captura de pantalla 2026-03-12 092948.png" alt="GameHub"></div>
+        <div class="login-icon"><img src="../IMAGENES/LogoGameHub.png" alt="GameHub"></div>
         <h1>Bienvenido!</h1>
 
         <form method="post">
             <div class="form-group">
-                <label for="username">Nombre de usuario</label>
+                <label for="username"></label>
                 <input type="text" id="username" name="username" placeholder="Introduce tu nombre de usuario" required>
                 <br><br>
                 <input type="text" id="password" name="password" placeholder="Introduce tu contraseña" required>
             </div>
-            <button type="submit">Iniciar sesión</button>
+            <button type="submit">Iniciar sesión</button> 
         </form>
 
         <div class="back-link">
-            <a href="home.php">← Volver</a>
+            <a href="../VIEW/home.php">Volver</a>
         </div>
     </div>
 </body>
