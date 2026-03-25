@@ -400,5 +400,5 @@ foreach ($_SESSION['cart'] as $item => $qty) {
 
     </div>
 </body>
-
+<a href="../controller/LogoutController.php">Cerrar Sesión</a>
 </html>
