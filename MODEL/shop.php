@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit;
@@ -10,10 +8,14 @@ if (!isset($_SESSION['user'])) {
 
 // Product catalog (price + initial stock)
 $products = [
-    "ea fc26"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/FC26.jpg"],
+    "EA FC26"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/FC26.jpg"],
     "Spider-Man 2"    => ["price" => 59.99,  "stock" => 45, "img" => "../IMAGENES/SpiderMan2.jpg"],
-    "Nba 2k2026" => ["price" => 69.99,  "stock" => 87,  "img" => "../IMAGENES/2K26.jpg"],
+    "NBA 2K2026" => ["price" => 69.99,  "stock" => 87,  "img" => "../IMAGENES/2K26.jpg"],
     "India Jones"  => ["price" => 39.99, "stock" => 12,  "img" => "../IMAGENES/IndianaJones.jpg"],
+    "Resident Evil Requiem"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/ResidentEvilRequiem.jpg"],
+    "Ark Survival Ascended"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/ArkSurvivlaAscended.jpg"],
+    "Terraria"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/Terraria.jpg"],
+    "Stardew Valley"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/StardewValley.jpg"],
 ];
 
 // Initialize stock in session (only once)
