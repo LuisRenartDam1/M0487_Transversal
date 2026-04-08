@@ -160,7 +160,7 @@ session_start();
         <?php else: ?>
             <p class="welcome-text">Tu tienda online para comprar los mejores videojuegos a los mejores precios</p>
             <div class="button-group">
-                <a href="../CONTROLLER/login.php" class="btn-primary">Iniciar sesión</a>
+                <a href="login.html" class="btn-primary">Iniciar sesión</a>
             </div>
         <?php endif; ?>
     </div>
