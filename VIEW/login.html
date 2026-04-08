@@ -76,6 +76,26 @@
             color: #999;
         }
 
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #2c2c2c;
+            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+        }
+
+        input[type="password"]::placeholder {
+            color: #999;
+        }
+
         button {
             background: linear-gradient(135deg, #092fda 0%, #0579ec 100%);
             color: white;
@@ -122,13 +142,16 @@
     <title>Login</title>
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
     <form action="../controller/UserController.php" method="POST">
-        <label>Usuario:</label>
+
+        <h1>LOGIN</h1><br><br>
+
+        <label>USERNAME:</label>
         <input type="text" name="username" required>
-        
-        <label>Contraseña:</label>
+        <br>
+        <label>PASSWORD:</label>
         <input type="password" name="password" required>
+        <br><br>
         
         <button type="submit">Entrar</button>
     </form>
