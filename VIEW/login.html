@@ -80,6 +80,26 @@
             box-shadow: 0 0 0 3px rgba(41, 91, 226, 0.1);
         }
 
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #2c2c2c;
+            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+        }
+
+        input[type="password"]::placeholder {
+            color: #999;
+        }
+
         button {
             background: linear-gradient(135deg, #092fda 0%, #0579ec 100%);
             color: white;
@@ -113,6 +133,7 @@
 </head>
 <body>
 
+
     <div class="login-container">
         <div class="login-icon"><img src="LogoGameHub.png" alt="logo"></div>
         <h1>Log In</h1>
@@ -135,6 +156,7 @@
             <a href="index.html">← Volver al inicio</a>
         </div>
     </div>
+
 
 </body>
 </html>
