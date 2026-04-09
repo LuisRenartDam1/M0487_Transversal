@@ -44,11 +44,13 @@ if(isset($_POST["loginButton"])){
     $user->login();
 }
 
-// if(RegisterButton)
-    // $user->register();
+if(isset($_POST["RegisterButton"])){
+    $user->register();
+}
 
-// if(LogoutButton)
-    // $user->logout();
+//if(isset($_POST[""])){
+    $user->register();
+//}
 
 
 
@@ -91,8 +93,38 @@ class UserController
         // redirect profile
     }
 
-    //TODO register
+ function register() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
+        // En un caso real, aquí harías un INSERT en la base de datos
+        $_SESSION['user'] = $_POST['username'];
+        $_SESSION['cart'] = [];
+        
+        
+        header("Location: ../view/shop.php");
+        exit;
+    }
+}
 
-    //TODO logout
+
+function logout() {
+    
+    $_SESSION = array();
+
+    
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+
+   
+    session_destroy();
+
+    
+    header("Location: ../view/login.php");
+    exit;
+}
 }
 ?>
