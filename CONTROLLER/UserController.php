@@ -62,7 +62,6 @@ class UserController
     // Método
     public function login()
     {
-        echo "Hola, soy ";
         // leer datos del form, $_POST
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -86,6 +85,8 @@ class UserController
         while ($fila = $resultado->fetch_assoc()) {
             echo "Nombre: " . $fila['password'] . "<br>";//TODO redirect profile header Pr4Session_shop
         }
+
+        header("Location: ../view/shop.php");
 
         $stmt->close();
         $conexion->close();
