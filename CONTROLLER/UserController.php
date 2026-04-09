@@ -81,5 +81,14 @@ class UserController
 
         // redirect profile
     }
+
+    public function register()
+    {
+
+    }
+    public function logout()
+    {
+    
+    }
 }
 ?>
