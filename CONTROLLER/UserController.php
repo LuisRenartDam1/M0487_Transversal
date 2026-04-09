@@ -61,7 +61,7 @@ class UserController
 
     // Método
     public function login()
-    {
+{
 
         // leer datos del form, $_POST
         $username = $_POST['username'];
@@ -98,18 +98,7 @@ class UserController
         exit;
     } else {
         echo "Usuario o contraseña incorrectos.";
-=======
-        while ($fila = $resultado->fetch_assoc()) {
-            echo "Nombre: " . $fila['password'] . "<br>";//TODO redirect profile header Pr4Session_shop
-        }
 
-        header("Location: ../view/shop.php");
-
-        $stmt->close();
-        $conexion->close();
-
-        // redirect profile
->>>>>>> 8e67fae6ca152f56a4330bceaf29a292fce74783
     }
 
     $stmt->close();
