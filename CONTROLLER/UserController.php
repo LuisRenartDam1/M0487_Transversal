@@ -93,17 +93,7 @@ class UserController
         // redirect profile
     }
 
-<<<<<<< HEAD
 
-    public function register()
-    {
-    
-    }
-    public function logout()
-    {
-    
-    }
-=======
  function register() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
         // En un caso real, aquí harías un INSERT en la base de datos
@@ -137,6 +127,5 @@ function logout() {
     header("Location: ../view/login.php");
     exit;
 }
->>>>>>> 54be8327d3de32b1f4fc1929901f47ce86d51ace
 }
 ?>
