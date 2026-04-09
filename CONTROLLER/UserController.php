@@ -94,15 +94,46 @@ class UserController
     }
 
 
+
  function register() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
         // En un caso real, aquí harías un INSERT en la base de datos
         $_SESSION['user'] = $_POST['username'];
         $_SESSION['cart'] = [];
+
         
         
-        header("Location: ../view/shop.php");
-        exit;
+        $conexion = mysqli_connect("localhost", "root", "", "BBDDTransversal");
+
+        if (!$conexion) {
+            die("Error de conexión: " . mysqli_connect_error());
+        }
+
+        $user = $_POST['username'];
+   
+        $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $stmt = mysqli_prepare($conexion, $sql);
+
+       
+        mysqli_stmt_bind_param($stmt, "ss", $user, $pass);
+        
+        if (mysqli_stmt_execute($stmt)) {
+            
+            $_SESSION['user'] = $user;
+            $_SESSION['cart'] = [];
+            
+            header("Location: ../view/shop.php");
+            exit;
+        } else {
+            
+            echo "Error: El usuario ya existe o hubo un problema en la DB.";
+        }
+
+        mysqli_stmt_close($stmt);
+        mysqli_close($conexion);
     }
 }
 
