@@ -39,7 +39,16 @@ echo __LINE__;
 // UserController user = new UserController();
 $user = new UserController();
 // user.login();
-$user->login();
+
+if(isset($_POST["loginButton"])){
+    $user->login();
+}
+
+// if(RegisterButton)
+    // $user->register();
+
+// if(LogoutButton)
+    // $user->logout();
 
 
 
@@ -57,7 +66,7 @@ class UserController
         $password = $_POST['password'];
 
         // select en base de datos
-        $conexion = new mysqli("localhost", "root", "", "bbddtransversal");//TODO commit .sql model
+        $conexion = new mysqli("localhost", "root", "", "bbddtransversal");
 
         // Preparar consulta
         $sql = "SELECT * FROM users WHERE username = ?";//TODO password
@@ -81,5 +90,9 @@ class UserController
 
         // redirect profile
     }
+
+    //TODO register
+
+    //TODO logout
 }
 ?>
