@@ -44,13 +44,13 @@ if(isset($_POST["loginButton"])){
     $user->login();
 }
 
-if(isset($_POST["RegisterButton"])){
+if(isset($_POST["registerButton"])){
     $user->register();
 }
 
-//if(isset($_POST[""])){
-    $user->register();
-//}
+if(isset($_POST["logoutButton"])){
+    $user->logout();
+}
 
 
 
@@ -62,10 +62,11 @@ class UserController
     // Método
     public function login()
     {
-    
-    // 1. Leer datos del formulario
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+
+        // leer datos del form, $_POST
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
 
     // 2. Conectar
     $conexion = new mysqli("localhost", "root", "", "bbddtransversal");
@@ -85,6 +86,7 @@ class UserController
     // 6. Obtener resultados
     $resultado = $stmt->get_result();
 
+<<<<<<< HEAD
     // Comprobamos si encontró a alguien
     if ($fila = $resultado->fetch_assoc()) {
         // Si entra aquí, es que el usuario y contraseña son correctos
@@ -96,6 +98,18 @@ class UserController
         exit;
     } else {
         echo "Usuario o contraseña incorrectos.";
+=======
+        while ($fila = $resultado->fetch_assoc()) {
+            echo "Nombre: " . $fila['password'] . "<br>";//TODO redirect profile header Pr4Session_shop
+        }
+
+        header("Location: ../view/shop.php");
+
+        $stmt->close();
+        $conexion->close();
+
+        // redirect profile
+>>>>>>> 8e67fae6ca152f56a4330bceaf29a292fce74783
     }
 
     $stmt->close();
