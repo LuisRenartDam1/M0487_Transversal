@@ -44,13 +44,13 @@ if(isset($_POST["loginButton"])){
     $user->login();
 }
 
-if(isset($_POST["RegisterButton"])){
+if(isset($_POST["registerButton"])){
     $user->register();
 }
 
-//if(isset($_POST[""])){
-    $user->register();
-//}
+if(isset($_POST["logoutButton"])){
+    $user->logout();
+}
 
 
 
