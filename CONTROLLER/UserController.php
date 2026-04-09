@@ -62,42 +62,50 @@ class UserController
     // Método
     public function login()
     {
-        echo "Hola, soy ";
-        // leer datos del form, $_POST
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+    
+    // 1. Leer datos del formulario
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-        // select en base de datos
-        $conexion = new mysqli("localhost", "root", "", "bbddtransversal");
+    // 2. Conectar
+    $conexion = new mysqli("localhost", "root", "", "bbddtransversal");
 
-        // Preparar consulta
-        $sql = "SELECT * FROM users WHERE username = ?";//TODO password
-        $stmt = $conexion->prepare($sql);
+    // 3. LA CONSULTA: Buscamos al usuario que coincida con AMBOS campos
+    // Definimos la variable $sql que te faltaba
+    $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    
+    $stmt = $conexion->prepare($sql);
 
-        // Vincular parámetros (tipos: i=integer, s=string, d=double, b=blob)
-        $stmt->bind_param("s", $username);
+    // 4. Vincular parámetros (los dos son strings: "ss")
+    $stmt->bind_param("ss", $username, $password);
 
-        // Ejecutar
-        $stmt->execute();
+    // 5. Ejecutar
+    $stmt->execute();
 
-        // Obtener resultados
-        $resultado = $stmt->get_result();
+    // 6. Obtener resultados
+    $resultado = $stmt->get_result();
 
-        while ($fila = $resultado->fetch_assoc()) {
-            echo "Nombre: " . $fila['password'] . "<br>";//TODO redirect profile header Pr4Session_shop
-        }
-
-        $stmt->close();
-        $conexion->close();
-
-        // redirect profile
+    // Comprobamos si encontró a alguien
+    if ($fila = $resultado->fetch_assoc()) {
+        // Si entra aquí, es que el usuario y contraseña son correctos
+        session_start();
+        $_SESSION['user'] = $fila['username'];
+        $_SESSION['cart'] = [];
+        
+        header("Location: ../view/shop.php");
+        exit;
+    } else {
+        echo "Usuario o contraseña incorrectos.";
     }
 
+    $stmt->close();
+    $conexion->close();
+}
 
 
  function register() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
-        // En un caso real, aquí harías un INSERT en la base de datos
+    
         $_SESSION['user'] = $_POST['username'];
         $_SESSION['cart'] = [];
 
