@@ -86,7 +86,7 @@ class UserController
     // 6. Obtener resultados
     $resultado = $stmt->get_result();
 
-<<<<<<< HEAD
+    
     // Comprobamos si encontró a alguien
     if ($fila = $resultado->fetch_assoc()) {
         // Si entra aquí, es que el usuario y contraseña son correctos
