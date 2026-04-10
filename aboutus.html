@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GAMEHUB</title>
+    <style>
+        /* Tu CSS original se mantiene igual */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .cart-info {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .products-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-icon {
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
+            height: 200px; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.3s ease;
+        }
+
+        .product-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.1em;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos para el texto del About Us */
+        .text-card { display: block; line-height: 1.6; }
+        .text-card h2 { margin-bottom: 15px; }
+        .text-card h3 { margin-top: 25px; margin-bottom: 10px; color: #667eea; }
+        .text-card p { margin-bottom: 15px; }
+        .text-card ul { margin-left: 20px; margin-bottom: 15px; }
+        .text-card li { margin-bottom: 8px; }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 15px; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>GAMEHUB</h1>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="cart-info text-card">
+            <h2>Who We Are</h2>
+            <p>We’re an <strong>ENTERPRISE named GameHub</strong>, founded by 3 young people in 2017. We decided to create this company because of a School Project, we have our personal international providers like Rockstar, Epic Games, EA, etc.</p>
+
+            <h3>MISSION</h3>
+            <p>Our mission is to restore integrity to the digital storefront. We believe every player deserves a 'no-surprises' experience, ensuring that the game you see is exactly the game you play.</p>
+
+            <h3>VISION</h3>
+            <p>Our vision is to keep giving users a comfortable and easy experience when they visit our website. We want everyone to find and buy video games without problems. We also want to continue lowering the prices of video games, so more people can enjoy them.</p>
+        </div>
+
+        <div class="cart-info text-card">
+            <h2>VALUES</h2>
+            <ul>
+                <li><strong>Trust and Transparency:</strong> Honest communication regarding keys and pricing.</li>
+                <li><strong>Customer-Centricity:</strong> Prioritizing user experience and quick resolution.</li>
+                <li><strong>Accessibility:</strong> Continually working to lower prices.</li>
+                <li><strong>Quality:</strong> Genuine products instantly available.</li>
+            </ul>
+        </div>
+
+        <section class="products-section">
+            <h2>Meet the Founders</h2>
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <img src="Captura de pantalla 2026-04-10 080559.png" alt="Gian - Dev">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Gian</div>
+                        <div class="product-price">Lead Developer / Technical Manager</div>
+                        <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">Encargado de la arquitectura técnica y el rendimiento de la plataforma.</p>
+                        <ul style="font-size: 0.85em; color: #444; margin-left: 15px;">
+                            <li><strong>APIs:</strong> Conexión con Steam, Twitch y bases de datos.</li>
+                            <li><strong>Database:</strong> Sistemas seguros para usuarios y reviews.</li>
+                            <li><strong>Optimization:</strong> Velocidad de carga extrema para contenido 4K.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <img src="Captura de pantalla 2026-04-10 080551.png" alt="Joel - Design">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Joel</div>
+                        <div class="product-price">Lead Designer / User Experience (UX)</div>
+                        <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">Responsable de que GameHub se vea increíble y sea fácil de usar.</p>
+                        <ul style="font-size: 0.85em; color: #444; margin-left: 15px;">
+                            <li><strong>Gamers Design:</strong> Dark Mode y menús modernos.</li>
+                            <li><strong>Responsive:</strong> Adaptación perfecta a móviles y monitores 4K.</li>
+                            <li><strong>Brand Identity:</strong> Creación de logos, banners y estilo visual único.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <img src="Captura de pantalla 2026-04-10 080543.png" alt="Luis - Community">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Luis</div>
+                        <div class="product-price">Client Relations / Community Manager</div>
+                        <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">La cara de GameHub ante las marcas y nuestra comunidad.</p>
+                        <ul style="font-size: 0.85em; color: #444; margin-left: 15px;">
+                            <li><strong>Partnerships:</strong> Relación con Razer, Logitech y publishers.</li>
+                            <li><strong>PR:</strong> Consigue acceso anticipado a juegos para reviews.</li>
+                            <li><strong>Community:</strong> Lidera nuestro Discord y redes sociales (X/Twitter).</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
