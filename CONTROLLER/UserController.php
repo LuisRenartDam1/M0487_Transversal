@@ -94,7 +94,7 @@ class UserController
         $_SESSION['user'] = $fila['username'];
         $_SESSION['cart'] = [];
         
-        header("Location: ../view/shop.php");
+        header("Location: ../VIEW/shop.php");
         exit;
     } else {
         echo "Usuario o contraseña incorrectos.";
@@ -136,7 +136,7 @@ class UserController
             $_SESSION['user'] = $user;
             $_SESSION['cart'] = [];
             
-            header("Location: ../view/shop.php");
+            header("Location: ../VIEW/shop.php");
             exit;
         } else {
             
