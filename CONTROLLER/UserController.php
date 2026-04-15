@@ -1,173 +1,93 @@
-<!-- class UserController
-    connection;
-
-    login()
-         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
-      
-        $_SESSION['user'] = $_POST['username'];
-        $_SESSION['password'] = $_POST['password']; 
-        $_SESSION['cart'] = [];
-
-        
-        header("Location: ../view/shop.php");
-        exit;
-        // leer datos del form, $_POST
-    
-        // select en base de datos
-    
-        // redirect profile
-    }
-
-    logout()
-        //unset
-        //destroy_session
-        // redirect home
-    
-
-    register()
-        // leer datos del form, $_POST
-
-        // insert en base de datos
-
-        // redirect home -->
 <?php
-echo __LINE__;
 
-// Scanner scaner = new Scanner(system.in);
-// scaner.nextLine();
+session_start();
 
-// UserController user = new UserController();
-$user = new UserController();
-// user.login();
+require_once __DIR__ . '/../model/Users.php';
+require_once __DIR__ . '/../model/db.php';
 
-if(isset($_POST["loginButton"])){
-    $user->login();
-}
+$userController = new UserController();
 
-if(isset($_POST["registerButton"])){
-    $user->register();
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-if(isset($_POST["logoutButton"])){
-    $user->logout();
-}
-
-
-
-class UserController
-{
-    // Propiedades (atributos)
-    public $connection;
-
-    // Método
-    public function login()
-{
-
-        // leer datos del form, $_POST
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-
-    // 2. Conectar
-    $conexion = new mysqli("localhost", "root", "", "bbddtransversal");
-
-    // 3. LA CONSULTA: Buscamos al usuario que coincida con AMBOS campos
-    // Definimos la variable $sql que te faltaba
-    $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-    
-    $stmt = $conexion->prepare($sql);
-
-    // 4. Vincular parámetros (los dos son strings: "ss")
-    $stmt->bind_param("ss", $username, $password);
-
-    // 5. Ejecutar
-    $stmt->execute();
-
-    // 6. Obtener resultados
-    $resultado = $stmt->get_result();
-
-    
-    // Comprobamos si encontró a alguien
-    if ($fila = $resultado->fetch_assoc()) {
-        // Si entra aquí, es que el usuario y contraseña son correctos
-        session_start();
-        $_SESSION['user'] = $fila['username'];
-        $_SESSION['cart'] = [];
-        
-        header("Location: ../VIEW/shop.php");
-        exit;
-    } else {
-        echo "Usuario o contraseña incorrectos.";
-
+    // Si viene del formulario de registro
+    if (isset($_POST['register'])) {
+        $userController->register();
     }
 
-    $stmt->close();
-    $conexion->close();
+    // Si viene del formulario de login
+    if (isset($_POST['login'])) {
+        $userController->login();
+    }
 }
 
+// Si se recibe por GET la petición de logout
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    $userController->logout();
+}
 
- function register() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
+class UserController {
     
-        $_SESSION['user'] = $_POST['username'];
-        $_SESSION['cart'] = [];
+    public function register() {
+        if (!empty($_POST['username']) && !empty($_POST['password'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
-        
-        
-        $conexion = mysqli_connect("localhost", "root", "", "BBDDTransversal");
-
-        if (!$conexion) {
-            die("Error de conexión: " . mysqli_connect_error());
-        }
-
-        $user = $_POST['username'];
-   
-        $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-        $stmt = mysqli_prepare($conexion, $sql);
-
-       
-        mysqli_stmt_bind_param($stmt, "ss", $user, $pass);
-        
-        if (mysqli_stmt_execute($stmt)) {
+            $user = new Users($username, $password);
             
-            $_SESSION['user'] = $user;
-            $_SESSION['cart'] = [];
-            
-            header("Location: ../VIEW/shop.php");
-            exit;
+            $db = new Database();
+            $connection = $db->getConnection();
+
+            if ($user->register($connection)) {
+                // Registro exitoso, iniciamos sesión automáticamente
+                $_SESSION['user'] = $username;
+                $_SESSION['cart'] = [];
+                header("Location: ../shop.php"); // Ajusta esta ruta según dónde esté tu shop.php
+                exit();
+            } else {
+                echo "Error: El usuario ya existe o hubo un problema en la DB.";
+            }
         } else {
-            
-            echo "Error: El usuario ya existe o hubo un problema en la DB.";
+            echo "Por favor, completa todos los campos.";
         }
-
-        mysqli_stmt_close($stmt);
-        mysqli_close($conexion);
-    }
-}
-
-
-function logout() {
-    
-    $_SESSION = array();
-
-    
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000,
-            $params["path"], $params["domain"],
-            $params["secure"], $params["httponly"]
-        );
     }
 
-   
-    session_destroy();
+    public function login() {
+        if (!empty($_POST['username']) && !empty($_POST['password'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
-    
-    header("Location: ../view/login.php");
-    exit;
-}
+            $user = new Users($username, $password);
+            
+            $db = new Database();
+            $connection = $db->getConnection();
+
+            if ($user->login($connection)) {
+                $_SESSION['user'] = $username;
+                $_SESSION['cart'] = [];
+                header('Location: ../shop.php'); // Ajusta esta ruta según dónde esté tu shop.php
+                exit();
+            } else {
+                echo "Usuario o contraseña incorrectos.";
+            }
+        } else {
+            echo "Por favor, completa todos los campos.";
+        }
+    }
+
+    public function logout() {
+        $_SESSION = array();
+        
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        
+        session_destroy();
+        header("Location: ../login.html"); // Ajusta esta ruta a tu login.html
+        exit();
+    }
 }
 ?>
