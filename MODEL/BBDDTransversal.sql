@@ -1,10 +1,7 @@
+CREATE DATABASE IF NOT EXISTS BBDDTransversal;
+USE BBDDTransversal;
 
-create database BBDDTransversal;
-use BBDDTransversal;
-
-create table users(
-	username varchar(30) primary key,
-    password varchar(30) 
+CREATE TABLE IF NOT EXISTS users (
+    username VARCHAR(30) PRIMARY KEY,
+    password VARCHAR(255) NOT NULL
 );
-
-
