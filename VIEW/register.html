@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Registro - GameHub</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Mantenemos tu estilo original */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #295be2 0%, #e9e7e7 100%);
@@ -20,7 +16,6 @@
             align-items: center;
             padding: 20px;
         }
-
         .login-container {
             background: #fbfbfb;
             border-radius: 15px;
@@ -29,56 +24,23 @@
             max-width: 400px;
             width: 100%;
         }
-
-        .login-icon {
-            text-align: center;
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2em;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 600;
-            font-size: 0.95em;
-        }
-
-        input[type="text"] {
+        .login-icon { text-align: center; margin-bottom: 20px; }
+        .login-icon img { max-width: 150px; }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; font-size: 2em; }
+        form { display: flex; flex-direction: column; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #555; font-weight: 600; font-size: 0.95em; }
+        
+        /* Estilo para los inputs */
+        input[type="text"], input[type="password"] {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
             transition: all 0.3s ease;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #2c2c2c;
-            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
-        }
-
-        input[type="text"]::placeholder {
-            color: #999;
-        }
+        input:focus { outline: none; border-color: #0579ec; }
 
         button {
             background: linear-gradient(135deg, #092fda 0%, #0579ec 100%);
@@ -92,41 +54,32 @@
             transition: all 0.3s ease;
             margin-top: 10px;
         }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(51, 51, 51, 0.3);
-        }
-
-        button:active {
-            transform: translateY(-1px);
-        }
-
-        .back-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .back-link a {
-            color: #464646;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .back-link a:hover {
-            color: black;
-        }
+        button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(5, 121, 236, 0.3); }
+        .back-link { text-align: center; margin-top: 20px; }
+        .back-link a { color: #464646; text-decoration: none; font-weight: 600; }
     </style>
-   
 </head>
 <body>
     <div class="login-container">
-        <div class="login-icon"> <img src="LogoGameHub.png" alt="logo"></div>
+        <div class="login-icon">
+            <img src="LogoGameHub.png" alt="logo">
+        </div>
         <h1>Crear Cuenta</h1>
-       <form action="../controller/UserController.php" method="POST">
-    <button type="submit" name="register">Sign Up</button>
+        
+        <form action="../controller/UserController.php" method="POST">
+            <div class="form-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Elige un nombre de usuario" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Crea una contraseña" required>
+            </div>
+
+            <button type="submit" name="register">Sign Up</button>
         </form>
+
         <div class="back-link">
             <a href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
         </div>
