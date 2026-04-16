@@ -155,7 +155,7 @@ session_start();
             <p class="welcome-text">Bienvenido de vuelta!</p>
             <div class="user-name"><?php echo htmlspecialchars($_SESSION['user']); ?></div>
             <div class="button-group">
-                <a href="../MODEL/shop.php" class="btn-primary">Volver a la tienda</a>
+                <a href="../VIEW/shop.php" class="btn-primary">Volver a la tienda</a>
             </div>
         <?php else: ?>
             <p class="welcome-text">Tu tienda online para comprar los mejores videojuegos a los mejores precios</p>
