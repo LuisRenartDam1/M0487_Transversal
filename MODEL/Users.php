@@ -16,7 +16,7 @@ class Users {
 
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
         $stmt = $connection->prepare($sql);
-        $stmt->bind_param("ss", $this->username, $hashed_password);
+        $stmt->bind_param("ss",$this->username, $hashed_password);
 
         if ($stmt->execute()) {
             $stmt->close();
