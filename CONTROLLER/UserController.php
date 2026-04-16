@@ -86,7 +86,7 @@ class UserController {
         }
         
         session_destroy();
-        header("Location: ../login.html"); // Ajusta esta ruta a tu login.html
+        header("Location: ../VIEW/login.html"); // Ajusta esta ruta a tu login.html
         exit();
     }
 }
