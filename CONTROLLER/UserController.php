@@ -8,7 +8,6 @@ require_once __DIR__ . '/../model/db.php';
 $userController = new UserController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     // Si viene del formulario de registro
     if (isset($_POST['register'])) {
         $userController->register();
@@ -17,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Si viene del formulario de login
     if (isset($_POST['login'])) {
         $userController->login();
+
     }
 }
 
