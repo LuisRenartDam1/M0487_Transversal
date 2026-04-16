@@ -64,7 +64,7 @@ class UserController {
             if ($user->login($connection)) {
                 $_SESSION['user'] = $username;
                 $_SESSION['cart'] = [];
-                header('Location: ../shop.php'); // Ajusta esta ruta según dónde esté tu shop.php
+                header('Location: ../VIEW/shop.php'); // Ajusta esta ruta según dónde esté tu shop.php
                 exit();
             } else {
                 echo "Usuario o contraseña incorrectos.";
