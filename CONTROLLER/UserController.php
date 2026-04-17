@@ -67,7 +67,7 @@ class UserController {
                 header('Location: ../VIEW/shop.php'); // Ajusta esta ruta según dónde esté tu shop.php
                 exit();
             } else {
-                echo "Usuario o contraseña incorrectos.";
+                header("Location: ../VIEW/registerError.html");
             }
         } else {
             echo "Por favor, completa todos los campos.";
