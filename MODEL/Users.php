@@ -11,7 +11,7 @@ class Users {
     }
 
     public function register($connection) {
-        // Encriptamos la contraseña por seguridad
+        
         $hashed_password = password_hash($this->password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
@@ -35,7 +35,7 @@ class Users {
         $result = $stmt->get_result();
 
         if ($row = $result->fetch_assoc()) {
-            // Verificamos si la contraseña coincide con el hash
+            
             if (password_verify($this->password, $row['password'])) {
                 $stmt->close();
                 return true;

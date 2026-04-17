@@ -38,10 +38,10 @@ class UserController {
             $connection = $db->getConnection();
 
             if ($user->register($connection)) {
-                // Registro exitoso, iniciamos sesión automáticamente
+                
                 $_SESSION['user'] = $username;
                 $_SESSION['cart'] = [];
-                header("Location: ../VIEW/shop.php"); // Ajusta esta ruta según dónde esté tu shop.php
+                header("Location: ../VIEW/shop.php"); 
                 exit();
             } else {
                 echo "Error: El usuario ya existe o hubo un problema en la DB.";
@@ -86,7 +86,7 @@ class UserController {
         }
         
         session_destroy();
-        header("Location: ../VIEW/login.html"); // Ajusta esta ruta a tu login.html
+        header("Location: ../VIEW/login.html"); 
         exit();
     }
 }
