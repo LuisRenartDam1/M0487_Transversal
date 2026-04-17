@@ -311,7 +311,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
                 <span style="background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9em;">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></span>
                 <div class="nav-links">
                     <a href="../VIEW/home.php">Página Principal</a>
-                    <a href="../CONTROLLER/logout.php">Cerrar Session</a>
+                    <a href="../VIEW/">Cerrar Session</a>
                 </div>
             </div>
         </div>
