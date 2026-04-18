@@ -105,12 +105,13 @@ session_start();
         }
 
         header {
-            background: linear-gradient(135deg, #295be2 0%, #295be2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
             color: white;
-            padding: 15px 0;
+            padding: 20px 0;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             position: absolute;
             top: 0;
+            margin-right: 15px;
             width: 100%;
             z-index: 10;
         }
@@ -142,7 +143,7 @@ session_start();
     <?php if (isset($_SESSION['user'])): ?>
         <header>
             <div class="header-content">
-                <span style="font-weight: 600;">GameHub</span>
+                <span style="font-weight: 700; font-size: 2em;">GameHub</span>
                 <div class="user-badge">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></div>
             </div>
         </header>
