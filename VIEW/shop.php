@@ -284,6 +284,106 @@ foreach ($_SESSION['cart'] as $item => $qty) {
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
 
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ccc;
+            padding: 50px 20px 25px;
+            margin-top: auto;
+        }
+ 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+ 
+        /* Brand block */
+        .footer-brand .footer-logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+ 
+        .footer-brand p {
+            font-size: 0.85em;
+            color: #888;
+            max-width: 200px;
+            line-height: 1.5;
+        }
+ 
+        /* Menu block */
+        .footer-menu h4 {
+            letter-spacing: 2px;
+            font-size: 0.78em;
+            color: white;
+            margin-bottom: 18px;
+        }
+ 
+        .footer-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+ 
+        .footer-menu ul li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+ 
+        /* Social block */
+        .footer-social h4 {
+            letter-spacing: 2px;
+            font-size: 0.78em;
+            color: white;
+            margin-bottom: 18px;
+        }
+ 
+        .social-icons {
+            display: flex;
+            gap: 14px;
+        }
+ 
+        .social-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #ccc;
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.04);
+        }
+ 
+        /* SVG icons inside anchors */
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+ 
+        /* Divider & copyright */
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 35px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            font-size: 0.8em;
+            color: #555;
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -298,6 +398,10 @@ foreach ($_SESSION['cart'] as $item => $qty) {
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column; gap: 30px;
             }
         }
     </style>
@@ -400,6 +504,58 @@ foreach ($_SESSION['cart'] as $item => $qty) {
         </div>
 
     </div>
+
+    <footer>
+        <div class="footer-content">
+ 
+            <div class="footer-brand">
+                <div class="footer-logo">GameHub</div>
+                <p>Tu tienda de videojuegos de confianza.</p>
+            </div>
+ 
+            <div class="footer-menu">
+                <h4>MENÚ</h4>
+                <ul>
+                    <li><a href="../VIEW/home.php">Página principal</a></li>
+                    <li><a href="../VIEW/aboutus.html">Sobre nosotros</a></li>
+                    <li><a href="checkout.php">Ver el Pedido</a></li>
+                </ul>
+            </div>
+ 
+            <div class="footer-social">
+                <h4>SÍGUENOS</h4>
+                <div class="social-icons">
+ 
+                    <a href="LINK_FACEBOOK" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+ 
+                    <a href="LINK_X_TWITTER" class="social-icon" target="_blank" rel="noopener" aria-label="X">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+ 
+                    <a href="LINK_INSTAGRAM" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1.2"/>
+                        </svg>
+                    </a>
+ 
+                </div>
+            </div>
+ 
+        </div>
+ 
+        <div class="footer-bottom">
+            &copy; <?= date('Y') ?> GameHub. Todos los derechos reservados.
+        </div>
+    </footer>
+
 </body>
 
 </html>
