@@ -12,10 +12,10 @@ $products = [
     "Spider-Man 2"    => ["price" => 59.99,  "stock" => 45, "img" => "../IMAGENES/SpiderMan2.jpg"],
     "NBA 2K2026" => ["price" => 69.99,  "stock" => 87,  "img" => "../IMAGENES/2K26.jpg"],
     "India Jones"  => ["price" => 39.99, "stock" => 12,  "img" => "../IMAGENES/IndianaJones.jpg"],
-    "Resident Evil Requiem"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/ResidentEvilRequiem.jpg"],
-    "Ark Survival Ascended"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/ArkSurvivlaAscended.jpg"],
-    "Terraria"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/Terraria.jpg"],
-    "Stardew Valley"   => ["price" => 79.99, "stock" => 78,  "img" => "../IMAGENES/StardewValley.jpg"],
+    "Resident Evil Requiem"   => ["price" => 69.99, "stock" => 4,  "img" => "../IMAGENES/ResidentEvilRequiem.jpg"],
+    "Ark Survival Ascended"   => ["price" => 59.99, "stock" => 37,  "img" => "../IMAGENES/ArkSurvivlaAscended.jpg"],
+    "Terraria"   => ["price" => 14.99, "stock" => 67,  "img" => "../IMAGENES/Terraria.jpg"],
+    "Stardew Valley"   => ["price" => 9.99, "stock" => 56,  "img" => "../IMAGENES/StardewValley.jpg"],
 ];
 
 // Initialize stock in session (only once)
