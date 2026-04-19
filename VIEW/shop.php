@@ -338,6 +338,10 @@ foreach ($_SESSION['cart'] as $item => $qty) {
             font-size: 0.9em;
             display: inline-block;
         }
+
+        .footer-menu ul li a:hover {
+            color: #4d83f5;
+        }
  
         /* Social block */
         .footer-social h4 {
