@@ -1,21 +1,21 @@
 <?php
-
-
 class Database {
     private $host = "localhost";
-    private $user = "root";
-    private $password = "";
-    private $database = "BBDDTransversal";
-    private $connection;
+    private $db_name = "nombre_de_tu_base_de_datos"; 
+    private $username = "root"; 
+    private $password = ""; 
+    public ?PDO $conn = null;
 
     public function getConnection() {
-        $this->connection = new mysqli($this->host, $this->user, $this->password, $this->database);
-
-        if ($this->connection->connect_error) {
-            die("Error de conexión: " . $this->connection->connect_error);
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            // Configurar PDO para que lance excepciones en caso de error
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            echo "Error de conexión: " . $exception->getMessage();
         }
-
-        return $this->connection;
+        return $this->conn;
     }
 }
 ?>
