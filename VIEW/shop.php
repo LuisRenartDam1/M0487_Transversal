@@ -418,9 +418,9 @@ foreach ($_SESSION['cart'] as $item => $qty) {
             <div style="display: flex; gap: 15px; align-items: center;">
                 <span style="background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9em;">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></span>
                 <div class="nav-links">
-                    <a href="../VIEW/home.php">Página Principal</a>
-                    <a href="../VIEW/">Cerrar Session</a>
-                    <a href="../VIEW/aboutus.html">Sobre nosotros</a>
+                    <a href="../VIEW/home.php">Home</a>
+                    <a href="../VIEW/">Log Out</a>
+                    <a href="../VIEW/aboutus.html">About Us</a>
                 </div>
             </div>
         </div>
@@ -428,31 +428,31 @@ foreach ($_SESSION['cart'] as $item => $qty) {
 
     <div class="container">
         <div class="cart-info">
-        <div class="user-info">
-    <div class="info-item">
-        <span class="info-label">Productos en la Cesta</span>
-        <span class="info-value">
-            <?= array_sum($_SESSION['cart']); ?>
-        </span>
-    </div>
+            <div class="user-info">
+                <div class="info-item">
+                    <span class="info-label">Items in Cart</span>
+                    <span class="info-value">
+                        <?= array_sum($_SESSION['cart']); ?>
+                    </span>
+                </div>
 
     <div class="info-item">
-        <span class="info-label">Detalles de la Cesta</span>
-        <span class="info-value" style="font-size:0.95em; font-weight:500; color:#333;">
-            <?php if (empty($_SESSION['cart'])): ?>
-                Vacio
-            <?php else: ?>
-                <?php foreach ($_SESSION['cart'] as $item => $qty): ?>
-                    <?= htmlspecialchars($item) ?>
-                    (<?= $qty ?> × €<?= number_format($products[$item]['price'], 2) ?>)
-                    = €<?= number_format($products[$item]['price'] * $qty, 2) ?><br>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </span>
-    </div>
+        <span class="info-label">Cart Details</span>
+                    <span class="info-value" style="font-size:0.95em; font-weight:500; color:#333;">
+                        <?php if (empty($_SESSION['cart'])): ?>
+                            Empty
+                        <?php else: ?>
+                            <?php foreach ($_SESSION['cart'] as $item => $qty): ?>
+                                <?= htmlspecialchars($item) ?>
+                                (<?= $qty ?> × €<?= number_format($products[$item]['price'], 2) ?>)
+                                = €<?= number_format($products[$item]['price'] * $qty, 2) ?><br>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </span>
+                </div>
 
     <div class="info-item">
-        <span class="info-label">Precio Total</span>
+        <span class="info-label">Total Price</span>
         <span class="info-value">
             €<?= number_format($totalPrice, 2); ?>
         </span>
@@ -461,7 +461,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
 
             
             <div class="cart-actions">
-                <a href="checkout.php" class="btn btn-checkout">Pagar el Pedido</a>
+                <a href="checkout.php" class="btn btn-checkout">Proceed to Checkout</a>
             </div>
         </div>
 
@@ -511,23 +511,23 @@ foreach ($_SESSION['cart'] as $item => $qty) {
 
     <footer>
         <div class="footer-content">
- 
+
             <div class="footer-brand">
                 <div class="footer-logo">GameHub</div>
-                <p>Tu tienda de videojuegos de confianza.</p>
+                <p>Your trusted video game store.</p>
             </div>
- 
+
             <div class="footer-menu">
-                <h4>MENÚ</h4>
+                <h4>MENU</h4>
                 <ul>
-                    <li><a href="../VIEW/home.php">Página principal</a></li>
-                    <li><a href="../VIEW/aboutus.html">Sobre nosotros</a></li>
-                    <li><a href="checkout.php">Ver el Pedido</a></li>
+                    <li><a href="../VIEW/home.php">Home</a></li>
+                    <li><a href="../VIEW/aboutus.html">About Us</a></li>
+                    <li><a href="checkout.php">View Order</a></li>
                 </ul>
             </div>
  
             <div class="footer-social">
-                <h4>SÍGUENOS</h4>
+                <h4>FOLLOW US</h4>
                 <div class="social-icons">
  
                     <a href="http://facebook.com/RocketLeague/?locale=es_ES" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
@@ -554,12 +554,11 @@ foreach ($_SESSION['cart'] as $item => $qty) {
             </div>
  
         </div>
- 
+
         <div class="footer-bottom">
-            &copy; <?= date('Y') ?> GameHub. Todos los derechos reservados.
+            &copy; <?= date('Y') ?> GameHub. All rights reserved.
         </div>
     </footer>
 
 </body>
-
 </html>
