@@ -8,19 +8,19 @@ require_once __DIR__ . '/../model/db.php';
 $userController = new UserController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Si viene del formulario de registro
+   
     if (isset($_POST['register'])) {
         $userController->register();
     }
 
-    // Si viene del formulario de login
+    
     if (isset($_POST['login'])) {
         $userController->login();
 
     }
 }
 
-// Si se recibe por GET la petición de logout
+
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     $userController->logout();
 }
@@ -64,7 +64,7 @@ class UserController {
             if ($user->login($connection)) {
                 $_SESSION['user'] = $username;
                 $_SESSION['cart'] = [];
-                header('Location: ../VIEW/shop.php'); // Ajusta esta ruta según dónde esté tu shop.php
+                header('Location: ../VIEW/shop.php'); 
                 exit();
             } else {
                 header("Location: ../VIEW/registerError.html");
@@ -86,6 +86,7 @@ class UserController {
         }
         
         session_destroy();
+        
         header("Location: ../VIEW/login.html"); 
         exit();
     }
