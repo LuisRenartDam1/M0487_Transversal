@@ -151,17 +151,16 @@ session_start();
     <div class="container">
         <div><img src="../IMAGENES/LogoGameHub.png" alt="Logo GameHub"></div><br><br>
 
-
         <?php if (isset($_SESSION['user'])): ?>
-            <p class="welcome-text">Bienvenido de vuelta!</p>
+            <p class="welcome-text">Welcome back!</p>
             <div class="user-name"><?php echo htmlspecialchars($_SESSION['user']); ?></div>
             <div class="button-group">
-                <a href="../VIEW/shop.php" class="btn-primary">Volver a la tienda</a>
+                <a href="../VIEW/shop.php" class="btn-primary">Back to Shop</a>
             </div>
         <?php else: ?>
-            <p class="welcome-text">Tu tienda online para comprar los mejores videojuegos a los mejores precios</p>
+            <p class="welcome-text">Your online store to buy the best video games at the best prices</p>
             <div class="button-group">
-                <a href="login.html" class="btn-primary">Iniciar sesión</a>
+                <a href="login.html" class="btn-primary">Log In</a>
             </div>
         <?php endif; ?>
     </div>

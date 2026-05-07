@@ -13,13 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userController->register();
     }
 
-    
     if (isset($_POST['login'])) {
         $userController->login();
-
     }
 }
-
 
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     $userController->logout();
@@ -38,16 +35,15 @@ class UserController {
             $connection = $db->getConnection();
 
             if ($user->register($connection)) {
-                
                 $_SESSION['user'] = $username;
                 $_SESSION['cart'] = [];
                 header("Location: ../VIEW/shop.php"); 
                 exit();
             } else {
-                echo "Error: El usuario ya existe o hubo un problema en la DB.";
+                echo "Error: User already exists or there was a database problem.";
             }
         } else {
-            echo "Por favor, completa todos los campos.";
+            echo "Please fill in all fields.";
         }
     }
 
@@ -70,7 +66,7 @@ class UserController {
                 header("Location: ../VIEW/registerError.html");
             }
         } else {
-            echo "Por favor, completa todos los campos.";
+            echo "Please fill in all fields.";
         }
     }
 
