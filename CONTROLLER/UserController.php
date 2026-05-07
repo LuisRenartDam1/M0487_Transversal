@@ -86,6 +86,7 @@ class UserController {
         }
         
         session_destroy();
+        session_unset();
         
         header("Location: ../VIEW/login.html"); 
         exit();
