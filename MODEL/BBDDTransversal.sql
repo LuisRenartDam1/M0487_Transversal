@@ -7,7 +7,7 @@ create table users(
     password varchar(100) not null 
 );
 
-create table productos(
+create table products(
     id_product int auto_increment not null,
     name varchar(100) not null,
     price int not null,
@@ -15,12 +15,5 @@ create table productos(
     stock boolean not null
 );
 
-create table product(
-    id_product int auto_increment not null,
-    name varchar(50),
-    price double not null,
-    amount int not null,
-    stock boolean
-);
 
 
