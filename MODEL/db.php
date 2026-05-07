@@ -1,7 +1,7 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "bbddtransversal"; 
+    private $db_name = "BBDDtransversal"; 
     private $username = "root"; 
     private $password = ""; 
     public ?PDO $conn = null;
