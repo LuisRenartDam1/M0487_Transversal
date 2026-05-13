@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - GameHub</title>
+    <title>Register - GameHub</title>
     <style>
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,8 +29,8 @@
         form { display: flex; flex-direction: column; }
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; color: #555; font-weight: 600; font-size: 0.95em; }
-        
-        /* Estilo para los inputs */
+
+        /* Style for inputs */
         input[type="text"], input[type="password"] {
             width: 100%;
             padding: 12px 15px;
@@ -64,24 +63,24 @@
         <div class="login-icon">
             <img src="../IMAGENES/LogoGameHub.png" alt="logo">
         </div>
-        <h1>Crear Cuenta</h1>
-        
+        <h1>Create Account</h1>
+
         <form action="../CONTROLLER/UserController.php" method="POST">
             <div class="form-group">
-                <label for="username">Usuario</label>
-                <input type="text" id="username" name="username" placeholder="Elige un nombre de usuario" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Crea una contraseña" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
             </div>
 
             <button type="submit" name="register">Sign Up</button>
         </form>
 
         <div class="back-link">
-            <a href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
+            <a href="login.html">Already have an account? Log in</a>
         </div>
     </div>
 </body>
