@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamehub - Iniciar Sesión</title>
+    <title>Gamehub - Añadir Producto</title>
+
     <style>
         * {
             margin: 0;
@@ -22,19 +23,22 @@
             padding: 20px;
         }
 
-        .login-container {
+        .form-container {
             background: #fbfbfb;
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 50px 40px;
-            max-width: 400px;
+            max-width: 450px;
             width: 100%;
         }
 
-        .login-icon {
+        .form-icon {
             text-align: center;
-            font-size: 3.5em;
             margin-bottom: 20px;
+        }
+
+        .form-icon img {
+            width: 120px;
         }
 
         h1 {
@@ -62,9 +66,9 @@
             font-size: 0.95em;
         }
 
-        /* Estilo para inputs de texto y password */
         input[type="text"],
-        input[type="password"] {
+        input[type="number"],
+        select {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
@@ -75,30 +79,11 @@
         }
 
         input[type="text"]:focus,
-        input[type="password"]:focus {
+        input[type="number"]:focus,
+        select:focus {
             outline: none;
             border-color: #295be2;
             box-shadow: 0 0 0 3px rgba(41, 91, 226, 0.1);
-        }
-
-        input[type="password"] {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        input[type="password"]:focus {
-            outline: none;
-            border-color: #2c2c2c;
-            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
-        }
-
-        input[type="password"]::placeholder {
-            color: #999;
         }
 
         button {
@@ -135,27 +120,49 @@
 
 <body>
 
+    <div class="form-container">
 
-    <div class="login-container">
-        <div class="login-icon"><img src="../IMAGENES/LogoGameHub.png" alt="logo"></div>
-        <h1>Log In</h1>
-
-        <form action="../CONTROLLER/UserController.php" method="POST">
-        <div class="form-group">
-            <label for="password">User:</label>
-            <input type="text" id="username" name="username" placeholder="Tu Usuario" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
+        <div class="form-icon">
+            <img src="../IMAGENES/LogoGameHub.png" alt="logo">
         </div>
 
-        <button type="submit" name="login">Log In</button>
+        <h1>Add Product</h1>
+
+        <form action="guardarProducto.php" method="POST">
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"  required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price"  required>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="stock">Stock:</label>
+
+                <select name="stock" id="stock">
+                    <option value="1">Available</option>
+                    <option value="0">Not Available</option>
+                </select>
+            </div>
+
+            <button type="submit">Safe Producto</button>
+
         </form>
 
         <div class="back-link">
-            <a href="index.html">← Go Back</a>
+            <a href="shop.php">← Go Back</a>
         </div>
-    </div>
 
+    </div>
 
 </body>
 

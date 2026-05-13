@@ -8,7 +8,7 @@ create table users(
 );
 
 create table productos(
-    id_product int auto_increment not null,
+    id_product int primary key auto_increment not null,
     name varchar(100) not null,
     price int not null,
     amount int not null,
