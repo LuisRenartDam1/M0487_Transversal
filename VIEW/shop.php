@@ -416,11 +416,12 @@ foreach ($_SESSION['cart'] as $item => $qty) {
         <div class="header-content">
             <h1>GameHub</h1>
             <div style="display: flex; gap: 15px; align-items: center;">
-                <span style="background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9em;">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></span>
+https://github.com/LuisRenartDam1/M0487_Transversal_GameHub/pull/32/conflict?name=VIEW%252Fshop.php&ancestor_oid=e3caca2ba1b9eea1b4e3a8039b58deabf9f549ee&base_oid=5b79270030b05253cc527a6edf60558c5c6e0406&head_oid=438dd59c5b20f226b8ed802afd0be03d7007ee52                <span style="background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9em;">👤 <?php echo htmlspecialchars($_SESSION['user']); ?></span>
                 <div class="nav-links">
-                    <a href="../VIEW/home.php">Home</a>
+                    <a href="../VIEW/events.html">Functions</a>
+                    <a href="../VIEW/home.php">Principal Page</a>
                     <a href="../VIEW/">Log Out</a>
-                    <a href="../VIEW/aboutus.html">About Us</a>
+                    <a href="../VIEW/aboutus.html">Abput Us</a>
                 </div>
             </div>
         </div>
