@@ -59,7 +59,7 @@ if (!empty($_SESSION['cart'])) {
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
             color: white;
             padding: 20px 0;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -147,7 +147,7 @@ if (!empty($_SESSION['cart'])) {
             justify-content: center;
             width: 30px;
             height: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
             color: white;
             border-radius: 50%;
             font-weight: bold;
@@ -210,7 +210,7 @@ if (!empty($_SESSION['cart'])) {
         }
 
         .btn-finish {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #295be2 0%, #0579ec 100%);
             color: white;
         }
 
