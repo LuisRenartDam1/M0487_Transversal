@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-// Redirección si no hay sesión activa
+ 
+// Only logged-in users can access this page
 if (!isset($_SESSION['user'])) {
     header("Location: login.html");
     exit();
