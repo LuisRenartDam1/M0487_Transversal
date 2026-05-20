@@ -10,8 +10,7 @@ if (!isset($_SESSION['user'])) {
 require_once __DIR__ . '/../MODEL/db.php';
 require_once __DIR__ . '/../MODEL/Users.php';
 
-$db      = new Database();
-$conn    = $db->getConnection();
+$conn    = Database::getConnection();
 $profile = Users::getProfile($conn, $_SESSION['user']);
 
 // ── Gestión de mensajes de feedback ──
