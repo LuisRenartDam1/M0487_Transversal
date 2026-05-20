@@ -76,45 +76,37 @@ class UserController {
         exit();
     }
  
-    // ── UPDATE ── Edit profile fields ─────────────────────────────────────────
+    // ── UPDATE ── Edit profile fields (Username Only) ────────────────────────
     public function updateProfile() {
         if (!isset($_SESSION['user'])) {
             header("Location: ../VIEW/login.html");
             exit();
         }
  
-        $username  = $_SESSION['user'];
-        $email     = trim($_POST['email']     ?? '');
-        $full_name = trim($_POST['full_name'] ?? '');
-        $bio       = trim($_POST['bio']       ?? '');
+        $oldUsername = $_SESSION['user'];
+        $newUsername = trim($_POST['username'] ?? '');
  
-        // Handle avatar upload
-        $avatar = null;
-        if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
-            $allowed = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-            $finfo   = finfo_open(FILEINFO_MIME_TYPE);
-            $mime    = finfo_file($finfo, $_FILES['avatar']['tmp_name']);
-            finfo_close($finfo);
- 
-            if (in_array($mime, $allowed) && $_FILES['avatar']['size'] <= 2 * 1024 * 1024) {
-                $ext    = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-                $fname  = 'avatar_' . preg_replace('/[^a-z0-9]/i', '_', $username) . '.' . $ext;
-                $dest   = __DIR__ . '/../IMAGENES/' . $fname;
-                if (move_uploaded_file($_FILES['avatar']['tmp_name'], $dest)) {
-                    $avatar = '../IMAGENES/' . $fname;
-                }
-            }
+        if (empty($newUsername)) {
+            header("Location: ../VIEW/profile.php?updated=0");
+            exit();
         }
  
         $db   = new Database();
         $conn = $db->getConnection();
-        $ok   = Users::updateProfile($conn, $username, $email, $full_name, $bio, $avatar);
+        
+        // Ejecuta el UPDATE en la base de datos usando el nuevo método adaptado
+        $ok = Users::updateProfile($conn, $oldUsername, $newUsername);
+ 
+        if ($ok) {
+            // ¡Crucial! Actualizamos la sesión para que el sistema reconozca el nuevo nombre
+            $_SESSION['user'] = $newUsername; 
+        }
  
         header("Location: ../VIEW/profile.php?updated=" . ($ok ? '1' : '0'));
         exit();
     }
  
-    
+    // ── UPDATE ── Change Password ─────────────────────────────────────────────
     public function changePassword() {
         if (!isset($_SESSION['user'])) {
             header("Location: ../VIEW/login.html");
@@ -149,7 +141,7 @@ class UserController {
         exit();
     }
  
-   
+    // ── DELETE ── Delete Account ──────────────────────────────────────────────
     public function deleteAccount() {
         if (!isset($_SESSION['user'])) {
             header("Location: ../VIEW/login.html");
@@ -164,7 +156,6 @@ class UserController {
         $ok   = Users::deleteAccount($conn, $username, $password);
  
         if ($ok) {
-            
             $_SESSION = [];
             if (ini_get("session.use_cookies")) {
                 $p = session_get_cookie_params();
@@ -180,7 +171,7 @@ class UserController {
         exit();
     }
  
-   
+    // ── LOGOUT ── Destroy Session ─────────────────────────────────────────────
     public function logout() {
         $_SESSION = [];
         if (ini_get("session.use_cookies")) {
@@ -190,7 +181,6 @@ class UserController {
             );
         }
         session_destroy();
-        session_unset();
         header("Location: ../VIEW/login.html");
         exit();
     }
