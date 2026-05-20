@@ -422,6 +422,7 @@ foreach ($_SESSION['cart'] as $item => $qty) {
                     <a href="../VIEW/home.php">Principal Page</a>
                     <a href="../VIEW/">Log Out</a>
                     <a href="../VIEW/aboutus.html">About Us</a>
+                    <a href="../VIEW/Profile.php">Profile</a>
                 </div>
             </div>
         </div>
