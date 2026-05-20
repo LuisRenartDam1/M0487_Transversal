@@ -13,30 +13,30 @@ require_once __DIR__ . '/../MODEL/Users.php';
 $conn    = Database::getConnection();
 $profile = Users::getProfile($conn, $_SESSION['user']);
 
-// ── Gestión de mensajes de feedback ──
+// ── Feedback message management ──
 $msg = '';
 $msgClass = '';
 
 if (isset($_GET['updated'])) {
-    $msg = $_GET['updated'] === '1' ? '¡Perfil actualizado con éxito!' : 'Error al actualizar el perfil.';
+    $msg = $_GET['updated'] === '1' ? 'Profile updated successfully!' : 'Error updating profile.';
     $msgClass = $_GET['updated'] === '1' ? 'success' : 'error';
 } elseif (isset($_GET['pwd'])) {
-    $msg = $_GET['pwd'] === 'ok' ? '¡Contraseña cambiada con éxito!' : 'La contraseña actual es incorrecta.';
+    $msg = $_GET['pwd'] === 'ok' ? 'Password changed successfully!' : 'The current password is incorrect.';
     $msgClass = $_GET['pwd'] === 'ok' ? 'success' : 'error';
 } elseif (isset($_GET['pwd_error'])) {
-    $msg = 'Error en las contraseñas (no coinciden o son muy cortas).';
+    $msg = 'Password error (they do not match or are too short).';
     $msgClass = 'error';
 } elseif (isset($_GET['del_error'])) {
-    $msg = 'Contraseña incorrecta. El usuario no fue eliminado.';
+    $msg = 'Incorrect password. The user was not deleted.';
     $msgClass = 'error';
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameHub – Mi Perfil</title>
+    <title>GameHub – My Profile</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4ff; color: #333; padding-top: 80px; }
@@ -75,8 +75,8 @@ if (isset($_GET['updated'])) {
     <div class="header-content">
         <strong style="font-size: 1.4em;">GameHub</strong>
         <nav class="header-nav">
-            <a href="shop.php">Tienda</a>
-            <a href="../CONTROLLER/UserController.php?action=logout">Cerrar Sesión </a>
+            <a href="shop.php">Store</a>
+            <a href="../CONTROLLER/UserController.php?action=logout">Log Out </a>
         </nav>
     </div>
 </header>
@@ -87,45 +87,45 @@ if (isset($_GET['updated'])) {
     <?php endif; ?>
 
     <div class="card">
-        <h2>Datos de Cuenta</h2>
+        <h2>Account Data</h2>
         <form action="../CONTROLLER/UserController.php" method="POST">
             <div class="form-group">
-                <label for="username">Nombre de Usuario</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username" value="<?= htmlspecialchars($profile['username'] ?? '') ?>" required>
             </div>
-            <button type="submit" name="updateProfile" class="btn btn-primary">Actualizar Usuario</button>
+            <button type="submit" name="updateProfile" class="btn btn-primary">Update User</button>
         </form>
     </div>
 
     <div class="card">
-        <h2>Cambiar Contraseña</h2>
+        <h2>Change Password</h2>
         <form action="../CONTROLLER/UserController.php" method="POST">
             <div class="form-group">
-                <label for="current_password">Contraseña Actual</label>
+                <label for="current_password">Current Password</label>
                 <input type="password" id="current_password" name="current_password" required>
             </div>
             <div class="form-group">
-                <label for="new_password">Nueva Contraseña</label>
-                <input type="password" id="new_password" name="new_password" placeholder="Mínimo 6 caracteres" required minlength="6">
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" name="new_password" placeholder="Minimum 6 characters" required minlength="6">
             </div>
             <div class="form-group">
-                <label for="confirm_password">Confirmar Nueva Contraseña</label>
+                <label for="confirm_password">Confirm New Password</label>
                 <input type="password" id="confirm_password" name="confirm_password" required minlength="6">
             </div>
-            <button type="submit" name="changePassword" class="btn btn-primary">Modificar Contraseña</button>
+            <button type="submit" name="changePassword" class="btn btn-primary">Modify Password</button>
         </form>
     </div>
 
     <div class="card">
-        <h2 style="color: #c62828;"> Zona de Peligro</h2>
+        <h2 style="color: #c62828;"> Danger Zone</h2>
         <div class="danger-zone">
-            <p>Esta acción eliminará de forma irreversible tu cuenta <strong><?= htmlspecialchars($profile['username'] ?? '') ?></strong> junto con todo tu historial.</p>
-            <form action="../CONTROLLER/UserController.php" method="POST" onsubmit="return confirm('¿Seguro que deseas eliminar definitivamente tu cuenta?');">
+            <p>This action will irreversibly delete your account <strong><?= htmlspecialchars($profile['username'] ?? '') ?></strong> along with all your history.</p>
+            <form action="../CONTROLLER/UserController.php" method="POST" onsubmit="return confirm('Are you sure you want to permanently delete your account?');">
                 <div class="form-group">
-                    <label for="delete_password">Ingresa tu contraseña para confirmar</label>
+                    <label for="delete_password">Enter your password to confirm</label>
                     <input type="password" id="delete_password" name="delete_password" required>
                 </div>
-                <button type="submit" name="deleteAccount" class="btn btn-danger">Eliminar Mi Cuenta</button>
+                <button type="submit" name="deleteAccount" class="btn btn-danger">Delete My Account</button>
             </form>
         </div>
     </div>
