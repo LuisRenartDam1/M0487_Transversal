@@ -1,21 +1,34 @@
 <?php
-class Database {
-    private $host = "localhost";
-    private $db_name = "BBDDtransversal"; 
-    private $username = "root"; 
-    private $password = ""; 
-    public ?PDO $conn = null;
 
-    public function getConnection() {
-        $this->conn = null;
-        try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $exception) {
-            echo "Error de conexión: " . $exception->getMessage();
+class Database {
+
+    private string $host     = "localhost";
+    private string $db_name  = "BBDDtransversal";
+    private string $username = "root";
+    private string $password = "";
+    private static ?PDO $instance = null;
+    private function __construct() {}
+
+    public static function getConnection(): PDO {
+
+        if (self::$instance === null) {
+
+            $dsn = "mysql:host=localhost;dbname=BBDDtransversal;charset=utf8mb4";
+
+            $options = [
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES   => false,
+            ];
+
+            try {
+                self::$instance = new PDO($dsn, "root", "", $options);
+            } catch (PDOException $e) {
+                error_log("Error de conexión PDO: " . $e->getMessage());
+                die("No se pudo conectar a la base de datos. Contacta con el administrador.");
+            }
         }
-        return $this->conn;
+
+        return self::$instance;
     }
 }
-?>

@@ -383,6 +383,20 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label for="c-image">Product Image: <span
+                                style="color:#aaa; font-weight:400;">(optional)</span></label>
+                        <input type="file" id="c-image" name="image" accept="image/png, image/jpeg, image/webp"
+                            style="width:100%; padding:10px; border:2px dashed #c5d3f5; border-radius:8px; background:#f4f7ff; cursor:pointer;"
+                            onchange="previewImage(event)">
+                        <div id="image-preview-wrapper" style="display:none; margin-top:10px;">
+                            <img id="image-preview" src="" alt="Preview"
+                                style="width:100%; max-height:180px; object-fit:cover; border-radius:8px; border:2px solid #e0e0e0;">
+                            <div id="image-name"
+                                style="font-size:.78em; color:#888; margin-top:5px; text-align:center;"></div>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn-primary">Save Product</button>
                     <input type="hidden" name="create" value="1">
 
