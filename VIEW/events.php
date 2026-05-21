@@ -358,7 +358,7 @@
 
                 <h1>Add Product</h1>
 
-                <form action="guardarProducto.php" method="POST">
+                <form action="../CONTROLLER/EventController.php" method="POST">
 
                     <div class="form-group">
                         <label for="c-name">Name:</label>
@@ -384,6 +384,7 @@
                     </div>
 
                     <button type="submit" class="btn-primary">Save Product</button>
+                    <input type="hidden" name="create" value="1">
 
                 </form>
 
@@ -417,7 +418,7 @@
                                 <th>Stock</th>
                             </tr>
                         </thead>
-                        
+                        <tbody id="products-body"></tbody>
                     </table>
                 </div>
 
@@ -428,52 +429,83 @@
             </div>
         </div>
 
-       <!--UPDATE-->
+        <!--UPDATE-->
+        <?php
+
+        require_once '../CONTROLLER/EventController.php';
+
+        $controller = new EventController();
+
+        /*
+    Cogemos el ID del GET (form de búsqueda)
+*/
+        $id = $_GET['id'] ?? null;
+
+        /*
+    Solo llamamos a la BD si hay ID
+*/
+        $data = null;
+
+        if ($id) {
+            $data = $controller->readId($id);
+        }
+        ?>
         <div class="section" id="section-update">
             <div class="form-container">
 
                 <h1>Update Product</h1>
 
-                <form action="buscarProducto.php" method="GET">
+                <form method="GET">
                     <div class="form-group">
                         <label for="u-search-id">Product ID:</label>
                         <input type="number" id="u-search-id" name="id" placeholder="Enter product ID" min="1" required>
-                        <p class="field-hint">Enter the ID of the product you want to update.</p>
                     </div>
+
                     <button type="submit" class="btn-warning">Search Product</button>
                 </form>
 
                 <div class="divider"></div>
 
-                <form action="actualizarProducto.php" method="POST">
+                <form action="../CONTROLLER/EventController.php" method="POST">
 
-                    <input type="hidden" name="id" value="">
+                    <input type="hidden" name="id" value="<?= $data['id_product'] ?? '' ?>">
 
                     <div class="form-group">
                         <label for="u-name">Name:</label>
-                        <input type="text" id="u-name" name="name" placeholder="Product name" required>
+                        <input type="text" id="u-name" name="name"
+                            value="<?= $data['name'] ?? '' ?>"
+                            placeholder="Product name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="u-price">Price (€):</label>
-                        <input type="number" id="u-price" name="price" placeholder="0.00" min="0" step="0.01" required>
+                        <input type="number" id="u-price" name="price"
+                            value="<?= $data['price'] ?? '' ?>"
+                            placeholder="0.00" min="0" step="0.01" required>
                     </div>
 
                     <div class="form-group">
                         <label for="u-amount">Amount:</label>
-                        <input type="number" id="u-amount" name="amount" placeholder="0" min="0" required>
+                        <input type="number" id="u-amount" name="amount"
+                            value="<?= $data['amount'] ?? '' ?>"
+                            placeholder="0" min="0" required>
                     </div>
 
                     <div class="form-group">
                         <label for="u-stock">Stock:</label>
                         <select name="stock" id="u-stock">
-                            <option value="1">Available</option>
-                            <option value="0">Not Available</option>
+                            <option value="1" <?= (isset($data['stock']) && $data['stock'] == 1) ? 'selected' : '' ?>>
+                                Available
+                            </option>
+                            <option value="0" <?= (isset($data['stock']) && $data['stock'] == 0) ? 'selected' : '' ?>>
+                                Not Available
+                            </option>
                         </select>
                     </div>
 
-                    <button type="submit" class="btn-warning">Update Product</button>
+                    <input type="hidden" name="update" value="1">
 
+                    <button type="submit" class="btn-warning">Update Product</button>
                 </form>
 
                 <div class="back-link">
@@ -484,12 +516,13 @@
         </div>
 
         <!--DELETE-->
+
         <div class="section" id="section-delete">
             <div class="form-container">
 
                 <h1>Delete Product</h1>
 
-                <form action="buscarEliminar.php" method="GET">
+                <form method="GET">
                     <div class="form-group">
                         <label for="d-search-id">Product ID:</label>
                         <input type="number" id="d-search-id" name="id" placeholder="Enter product ID" min="1" required>
@@ -500,23 +533,24 @@
 
                 <div class="divider"></div>
 
-                <form action="eliminarProducto.php" method="POST">
+                <form action="../CONTROLLER/EventController.php" method="POST">
 
-                    <input type="hidden" name="id" value="">
+                  <input type="hidden" name="id" value="<?= $data['id_product'] ?? '' ?>">
 
                     <div class="form-group">
                         <label>Name:</label>
-                        <input type="text" name="name_preview" placeholder="Product name will appear here" disabled>
+                        <input value="<?= $data['name'] ?? '' ?>" type="text" name="name_preview" placeholder="Product name will appear here" disabled>
                     </div>
 
                     <div class="form-group">
                         <label>Price (€):</label>
-                        <input type="number" name="price_preview" placeholder="Price will appear here" disabled>
+                        <input value="<?= $data['price'] ?? '' ?>" type="number" name="price_preview" placeholder="Price will appear here" disabled>
                     </div>
 
                     <div class="btn-row">
                         <button type="button" class="btn-secondary" onclick="showTab('read')">← Cancel</button>
                         <button type="submit" class="btn-danger">Confirm Delete</button>
+                        <input type="hidden" name="delete" value="1">
                     </div>
 
                 </form>
@@ -532,14 +566,82 @@
 
     <script>
         function showTab(tab) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('section-' + tab).classList.add('active');
+
+            // Guardar pestaña en la URL
+            window.location.hash = tab;
+
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section')
+                .forEach(section => section.classList.remove('active'));
+
+            // Quitar active de todas las pestañas
+            document.querySelectorAll('.nav-tab')
+                .forEach(tabBtn => tabBtn.classList.remove('active'));
+
+            // Mostrar sección seleccionada
+            document.getElementById('section-' + tab)
+                .classList.add('active');
+
+            // Activar botón correspondiente
             const tabs = ['create', 'read', 'update', 'delete'];
-            document.querySelectorAll('.nav-tab')[tabs.indexOf(tab)].classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            document.querySelectorAll('.nav-tab')[tabs.indexOf(tab)]
+                .classList.add('active');
+
+            // Cargar productos si estamos en READ
+            if (tab === 'read') {
+                loadProducts();
+            }
+
+            // Scroll arriba
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
+
+        function loadProducts() {
+
+            fetch('../CONTROLLER/EventController.php?action=read')
+                .then(response => response.json())
+                .then(data => {
+
+                    document.getElementById('products-body').innerHTML =
+                        data.map(product => `
+                        <tr>
+                            <td>${product.id_product}</td>
+                            <td>${product.name}</td>
+                            <td>${product.price}</td>
+                            <td>${product.amount}</td>
+                            <td>
+                                ${product.stock == 1
+                                ? 'Available'
+                                : 'Not Available'}
+                            </td>
+                        </tr>
+                    `).join('');
+
+                })
+                .catch(error => console.error(error));
+        }
+
+
+        // Al cargar la página
+        window.onload = function() {
+
+            // Obtener pestaña desde la URL
+            const currentTab = window.location.hash.replace('#', '');
+
+            // Si existe -> abrir esa
+            // Si no -> create
+            if (currentTab) {
+                showTab(currentTab);
+            } else {
+                showTab('create');
+            }
+
+        };
     </script>
 
 </body>
