@@ -33,7 +33,7 @@ class EventController
 
     public function create()
     {
-        $c = (new Database())->getConnection();
+        $c = Database::getConnection();
 
         $q = $c->prepare(
             'INSERT INTO productos (name, price, amount, stock)
@@ -58,7 +58,7 @@ class EventController
     public function read()
     {
 
-        $c = (new Database())->getConnection();
+       $c = Database::getConnection();
 
         $q = $c->query(
             'SELECT id_product, name, price, amount, stock
@@ -78,7 +78,7 @@ class EventController
     public function update()
     {
 
-        $c = (new Database())->getConnection();
+       $c = Database::getConnection();
 
         $q = $c->prepare(
             'UPDATE productos
@@ -108,7 +108,7 @@ class EventController
             return null;
         }
 
-        $c = (new Database())->getConnection();
+       $c = Database::getConnection();
 
         $q = $c->prepare(
             'SELECT id_product, name, price, amount, stock
@@ -127,7 +127,7 @@ class EventController
     public function delete()
     {
 
-        $c = (new Database())->getConnection();
+        $c = Database::getConnection();
 
         $q = $c->prepare(
             'DELETE FROM productos

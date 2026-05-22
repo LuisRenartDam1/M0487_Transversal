@@ -3,7 +3,7 @@
 class Database {
 
     private string $host     = "localhost";
-    private string $db_name  = "BBDDtransversal";
+    private string $db_name  = "BBDDTransversal";
     private string $username = "root";
     private string $password = "";
     private static ?PDO $instance = null;
